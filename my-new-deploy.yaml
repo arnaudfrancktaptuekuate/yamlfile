@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deploy
+  labels:
+    app:
+    type: lubbock
+spec:
+   template:
+     metadata:
+      name: my-app-pod
+      labels:
+        app:
+        type: testing
+     spec:
+       containers:
+       - name: test123
+         image: redis
+   replicas: 5
+   selector:
+      matchLabels:
+         type: testing
